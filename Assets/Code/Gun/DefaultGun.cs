@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class DefaultGun : MonoBehaviour
 {
@@ -60,8 +59,6 @@ public class DefaultGun : MonoBehaviour
         if (Physics.Raycast(spawnPos.position, dir, out hit, Mathf.Infinity, layer))
         {
             Debug.DrawRay(spawnPos.position, dir * hit.distance, Color.yellow);
-
-            Debug.Log("ENEMY");
 
             if (hit.collider.tag == "enemy")
             {

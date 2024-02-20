@@ -52,6 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 100
   maxHp: 100
+  turret: {fileID: 6637431932636282366, guid: a0a0a0630ee74fa45a75e5d76dfa42cf, type: 3}
 --- !u!114 &5089955427808529963
 MonoBehaviour:
   m_ObjectHideFlags: 0

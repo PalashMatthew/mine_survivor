@@ -8,6 +8,7 @@ public class GameUIController : MonoBehaviour
     public TMP_Text tHp;
     public TMP_Text tExp;
     public TMP_Text tRes;
+    public TMP_Text tLevel;
 
     GameObject player;
 
@@ -24,5 +25,7 @@ public class GameUIController : MonoBehaviour
         tExp.text = "EXP = " + GameController.expCount;
 
         tRes.text = "RES = " + GameController.resourcesCount;
+
+        tLevel.text = "Lv = " + GameController.playerLevel;
     }
 }

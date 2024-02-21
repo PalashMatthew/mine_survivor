@@ -14,10 +14,19 @@ public class DefaultGun : MonoBehaviour
     public GameObject bulletObj;
     public Transform spawnPos;
 
+    public int maxCellCount;
+    public int currCellCount;
+
+    public float reloadTime;
+
+    public float distanceShot;
+
 
     private void Start()
     {
         enemySpawn = GameObject.Find("GameController").GetComponent<EnemySpawn>();
+
+        currCellCount = maxCellCount;
 
         StartCoroutine(Attack());
     }
@@ -26,27 +35,46 @@ public class DefaultGun : MonoBehaviour
     {
         yield return new WaitForSeconds(attackSpeed);
 
-        float dist = 99999;
-        GameObject enemyObj = null;
-
-        foreach (GameObject gm in enemySpawn.enemyInst)
+        if (currCellCount > 0)
         {
-            if (Vector3.Distance(transform.position, gm.transform.position) < dist && CheckRay(gm))
+            float dist = 99999;
+            GameObject enemyObj = null;
+
+            foreach (GameObject gm in enemySpawn.enemyInst)
             {
-                enemyObj = gm;
-                dist = Vector3.Distance(transform.position, gm.transform.position);
+                if (Vector3.Distance(transform.position, gm.transform.position) < dist && CheckRay(gm))
+                {
+                    enemyObj = gm;
+                    dist = Vector3.Distance(transform.position, gm.transform.position);
+                }
             }
+
+            if (enemyObj != null)
+            {
+                GameObject _bullet = Instantiate(bulletObj, spawnPos.position, transform.rotation);
+                _bullet.transform.forward = enemyObj.transform.position - transform.position;
+                //_bullet.transform.position = new Vector3(_bullet.transform.position.x, 1.5f, _bullet.transform.position.z);
+
+                _bullet.GetComponent<Bullet>().damage = damage;
+
+                currCellCount--;
+            }
+
+            
+            StartCoroutine(Attack());
+        }        
+
+        if (currCellCount <= 0)
+        {
+            StartCoroutine(Reload());
         }
+    }
 
-        if (enemyObj != null)
-        {            
-            GameObject _bullet = Instantiate(bulletObj, spawnPos.position, transform.rotation);
-            _bullet.transform.forward = enemyObj.transform.position - transform.position;
-            //_bullet.transform.position = new Vector3(_bullet.transform.position.x, 1.5f, _bullet.transform.position.z);
+    IEnumerator Reload()
+    {
+        yield return new WaitForSeconds(reloadTime);
 
-            _bullet.GetComponent<Bullet>().damage = damage;
-        }
-
+        currCellCount = maxCellCount;
         StartCoroutine(Attack());
     }
 
@@ -56,7 +84,7 @@ public class DefaultGun : MonoBehaviour
 
         Vector3 dir = (_enemy.transform.position - spawnPos.position).normalized;
 
-        if (Physics.Raycast(spawnPos.position, dir, out hit, Mathf.Infinity, layer))
+        if (Physics.Raycast(spawnPos.position, dir, out hit, distanceShot, layer))
         {
             Debug.DrawRay(spawnPos.position, dir * hit.distance, Color.yellow);
 

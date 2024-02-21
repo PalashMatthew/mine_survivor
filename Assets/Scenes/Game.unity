@@ -8104,6 +8104,22 @@ PrefabInstance:
       propertyPath: joy
       value: 
       objectReference: {fileID: 1621793877}
+    - target: {fileID: 2767028463339747465, guid: 4b0164d5153297b46af5dfecb0e1260d, type: 3}
+      propertyPath: reloadTime
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2767028463339747465, guid: 4b0164d5153297b46af5dfecb0e1260d, type: 3}
+      propertyPath: attackSpeed
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2767028463339747465, guid: 4b0164d5153297b46af5dfecb0e1260d, type: 3}
+      propertyPath: distanceShot
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2767028463339747465, guid: 4b0164d5153297b46af5dfecb0e1260d, type: 3}
+      propertyPath: currCellCount
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

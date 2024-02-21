@@ -24,7 +24,7 @@ public class ResourcesObj : MonoBehaviour
 
         if (isPickUp)
         {
-            transform.DOMove(player.position, 0.5f);
+            transform.DOMove(player.position, 0.2f);
 
             if (Vector3.Distance(transform.position, player.position) < 1)
             {

@@ -23,6 +23,13 @@ public class EnemyController : MonoBehaviour
 
     public AIPath aiPatch;
 
+    [Header("Repulsion")]
+    public bool isExplosion;
+    public float distanceExplosion;
+    public GameObject explosionObj;
+    bool explosionActive;
+    public float explosionPause;
+
 
     private void Start()
     {
@@ -41,6 +48,27 @@ public class EnemyController : MonoBehaviour
         {
             transform.Translate(-Vector3.forward * repulsionSpeed * Time.deltaTime);
         }
+
+        if (isExplosion)
+        {
+            if (Vector3.Distance(transform.position, player.transform.position) <= distanceExplosion && !explosionActive)
+            {
+                explosionActive = true;
+                aiPatch.canMove = false;
+                StartCoroutine(Explosion());                
+            }
+        }
+    }
+
+    IEnumerator Explosion()
+    {
+        yield return new WaitForSeconds(explosionPause);
+        GameObject gm = Instantiate(explosionObj, transform.position, transform.rotation);
+        gm.GetComponent<EnemyExplosion>().damage = damage;
+
+        GameObject.Find("GameController").GetComponent<EnemySpawn>().enemyInst.Remove(gameObject);
+
+        Destroy(gameObject);
     }
 
     IEnumerator Attack()

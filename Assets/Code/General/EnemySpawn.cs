@@ -7,6 +7,9 @@ using UnityEngine.AI;
 public class EnemySpawn : MonoBehaviour
 {
     public GameObject enemy;
+    public GameObject enemy2, enemy3;
+
+    public float enemy2Chance, enemy3Chance;
 
     public float enemyCount;
     public float spawnTime;
@@ -18,35 +21,105 @@ public class EnemySpawn : MonoBehaviour
     public float minForward, maxForward;
 
     GameObject player;
-    Transform cameraTransform;
-
-    private NavMeshPath path;
 
     public List<GameObject> enemyInst;
 
     public List<GameObject> spawnEnemyPoint;
 
+    [Header("Boss")]
+    public GameObject bossObj;
+    public float timeBossSpawn;
+
+    private int enemySpawnType;
+
+    public float timeToAddEnemy;
+
 
     private void Start()
     {
-        player = GameObject.Find("Player");
-        cameraTransform = player.transform;
+        enemySpawnType = 1;
 
-        path = new NavMeshPath();
+        player = GameObject.Find("Player");
 
         StartCoroutine(SpawnEnemy());
+
+        StartCoroutine(SpawnBoss());
+
+        StartCoroutine(AddEnemyType());
+    }
+
+    IEnumerator AddEnemyType()
+    {
+        yield return new WaitForSeconds(timeToAddEnemy);
+
+        enemySpawnType++;
+
+        if (enemySpawnType < 3)
+            StartCoroutine(AddEnemyType());
+    }
+
+    IEnumerator SpawnBoss()
+    {
+        yield return new WaitForSeconds(timeBossSpawn);
+        GameObject gm = Instantiate(bossObj, SpawnPosition(), transform.rotation);
+        enemyInst.Add(gm);
     }
 
     IEnumerator SpawnEnemy()
     {
         yield return new WaitForSeconds(spawnTime);
-
+        
         for (int i = 0; i < enemyCount; i++)
         {
             if (enemyInst.Count < maxEnemyInLevel)
             {
-                GameObject gm = Instantiate(enemy, SpawnPosition(), transform.rotation);
-                enemyInst.Add(gm);
+                if (enemySpawnType == 1)
+                {
+                    GameObject gm = Instantiate(enemy, SpawnPosition(), transform.rotation);
+                    enemyInst.Add(gm);
+                }
+
+                if (enemySpawnType == 2)
+                {
+                    GameObject _enemy;
+
+                    int rand = Random.Range(1, 101);
+
+                    if (rand <= enemy2Chance)
+                    {
+                        _enemy = enemy2;
+                    }
+                    else
+                    {
+                        _enemy = enemy;
+                    }
+
+                    GameObject gm = Instantiate(_enemy, SpawnPosition(), transform.rotation);
+                    enemyInst.Add(gm);
+                }
+
+                if (enemySpawnType == 3)
+                {
+                    GameObject _enemy;
+
+                    int rand = Random.Range(1, 101);
+
+                    if (rand <= enemy2Chance)
+                    {
+                        _enemy = enemy2;
+                    }
+                    else if (rand > enemy2Chance && rand < enemy3Chance)
+                    {
+                        _enemy = enemy3;
+                    }
+                    else
+                    {
+                        _enemy = enemy;
+                    }
+
+                    GameObject gm = Instantiate(_enemy, SpawnPosition(), transform.rotation);
+                    enemyInst.Add(gm);
+                }
             }
         }        
 

@@ -7,6 +7,8 @@ public class Bullet : MonoBehaviour
     public float damage;
     public float speed;
 
+    public bool isRepulsion;
+
 
     private void Start()
     {
@@ -23,6 +25,12 @@ public class Bullet : MonoBehaviour
         if (other.tag == "enemy")
         {
             other.GetComponent<EnemyController>().Hit(damage);
+
+            if (isRepulsion)
+            {
+                other.GetComponent<EnemyController>().Repulsion();
+            }
+
             Destroy(gameObject);
         }
 

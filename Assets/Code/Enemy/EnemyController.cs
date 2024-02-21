@@ -1,3 +1,4 @@
+using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +14,15 @@ public class EnemyController : MonoBehaviour
 
     GameObject player;
 
-    public GameObject expObj;
+    public GameObject expObj;    
+
+    [Header("Repulsion")]
+    public float repulsionTime;
+    public float repulsionSpeed;
+    private bool isRepulsion;
+
+    public AIPath aiPatch;
+
 
     private void Start()
     {
@@ -26,6 +35,11 @@ public class EnemyController : MonoBehaviour
         {
             isAttack = true;
             StartCoroutine(Attack());
+        }
+
+        if (isRepulsion)
+        {
+            transform.Translate(-Vector3.forward * repulsionSpeed * Time.deltaTime);
         }
     }
 
@@ -52,5 +66,19 @@ public class EnemyController : MonoBehaviour
 
             Destroy(gameObject);
         }
+    }
+
+    public void Repulsion()
+    {
+        aiPatch.canMove = false;
+        isRepulsion = true;
+        StartCoroutine(RepulsionEnum());
+    }
+
+    IEnumerator RepulsionEnum()
+    {
+        yield return new WaitForSeconds(repulsionTime);
+        isRepulsion = false;
+        aiPatch.canMove = true;
     }
 }

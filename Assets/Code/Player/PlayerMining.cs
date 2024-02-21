@@ -30,7 +30,7 @@ public class PlayerMining : MonoBehaviour
             if (!isMine)
             {
                 isMine = true;
-                StartCoroutine(Mining());
+                StartCoroutine(PreMining());
             }           
         }
     }
@@ -41,6 +41,12 @@ public class PlayerMining : MonoBehaviour
         {
             blocks.Remove(other.gameObject);
         }        
+    }
+
+    IEnumerator PreMining()
+    {
+        yield return new WaitForSeconds(0.1f);
+        StartCoroutine(Mining()); 
     }
 
     IEnumerator Mining()

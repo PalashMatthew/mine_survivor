@@ -15,6 +15,7 @@ public class BlockController : MonoBehaviour
         if (hp <= 0)
         {
             GameObject.Find("Player").GetComponent<PlayerMining>().blocks.Remove(gameObject);
+            //GameObject.Find("A*").GetComponent<AstarPath>().Scan();
             Destroy(gameObject);
         }
     }

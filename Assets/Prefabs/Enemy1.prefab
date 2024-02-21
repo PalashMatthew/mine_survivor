@@ -217,7 +217,7 @@ MonoBehaviour:
   useRaycasting: 1
   mask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 256
   thickRaycast: 0
   thickRaycastRadius: 0
   use2DPhysics: 0

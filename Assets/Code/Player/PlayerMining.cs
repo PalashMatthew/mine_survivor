@@ -14,9 +14,10 @@ public class PlayerMining : MonoBehaviour
 
     private void Update()
     {
-        if (blocks.Count == 0)
+        if (blocks.Count == 0 && isMine)
         {
             isMine = false;
+            StopAllCoroutines();
         }
     }
 

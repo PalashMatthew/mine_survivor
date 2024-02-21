@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(turret, new Vector3(transform.position.x, 2.25f, transform.position.z), transform.rotation);
+            Instantiate(turret, new Vector3(transform.position.x, 1f, transform.position.z), transform.rotation);
         }
     }
 }

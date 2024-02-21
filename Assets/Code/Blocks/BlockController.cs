@@ -10,12 +10,50 @@ public class BlockController : MonoBehaviour
 
     public GameObject mesh;
 
+    public bool isHP;
+    public bool isResources;
+
+    public int expCount;
+
+    public GameObject expObj;
+    public GameObject hpObj;
+    public GameObject resObj;
+
+
     private void Update()
     {
         if (hp <= 0)
         {
             GameObject.Find("Player").GetComponent<PlayerMining>().blocks.Remove(gameObject);
-            //GameObject.Find("A*").GetComponent<AstarPath>().Scan();
+
+            if (isHP)
+            {
+                for (int i = 0; i < expCount; i++)
+                {
+                    Vector3 pos = new Vector3(Random.Range(transform.position.x - 3.5f, transform.position.x + 3.5f), 1, Random.Range(transform.position.z - 3.5f, transform.position.z + 3.5f));
+
+                    Instantiate(expObj, pos, transform.rotation);
+                }
+
+                Vector3 posHp = new Vector3(Random.Range(transform.position.x - 3.5f, transform.position.x + 3.5f), 1, Random.Range(transform.position.z - 3.5f, transform.position.z + 3.5f));
+
+                Instantiate(hpObj, posHp, transform.rotation);
+            }
+
+            if (isResources)
+            {
+                for (int i = 0; i < expCount; i++)
+                {
+                    Vector3 pos = new Vector3(Random.Range(transform.position.x - 3.5f, transform.position.x + 3.5f), 1, Random.Range(transform.position.z - 3.5f, transform.position.z + 3.5f));
+
+                    Instantiate(expObj, pos, transform.rotation);
+                }
+
+                Vector3 posHp = new Vector3(Random.Range(transform.position.x - 3.5f, transform.position.x + 3.5f), 1, Random.Range(transform.position.z - 3.5f, transform.position.z + 3.5f));
+
+                Instantiate(resObj, posHp, transform.rotation);
+            }
+
             Destroy(gameObject);
         }
     }

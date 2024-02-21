@@ -13,6 +13,8 @@ public class EnemyController : MonoBehaviour
 
     GameObject player;
 
+    public GameObject expObj;
+
     private void Start()
     {
         player = GameObject.Find("Player");
@@ -43,6 +45,11 @@ public class EnemyController : MonoBehaviour
         if (hp <= 0)
         {
             GameObject.Find("GameController").GetComponent<EnemySpawn>().enemyInst.Remove(gameObject);
+
+            Vector3 pos = new Vector3(Random.Range(transform.position.x - 3.5f, transform.position.x + 3.5f), 1, Random.Range(transform.position.z - 3.5f, transform.position.z + 3.5f));
+
+            Instantiate(expObj, pos, transform.rotation);
+
             Destroy(gameObject);
         }
     }

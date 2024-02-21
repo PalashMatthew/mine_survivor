@@ -56,6 +56,7 @@ MonoBehaviour:
   damage: 5
   attackDistance: 1
   attackSpeed: 1
+  expObj: {fileID: 4682928580413359914, guid: 65e99a6eb40b41144a577642a9aa62f9, type: 3}
 --- !u!114 &792905077295538290
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -24,6 +24,8 @@ public class EnemySpawn : MonoBehaviour
 
     public List<GameObject> enemyInst;
 
+    public List<GameObject> spawnEnemyPoint;
+
 
     private void Start()
     {
@@ -53,56 +55,20 @@ public class EnemySpawn : MonoBehaviour
 
     Vector3 SpawnPosition()
     {
-        int dir;
-        float _x = 0;
-        float _z = 0;
+        bool done = false;
+        Vector3 position = Vector3.zero;
 
-        Vector3 targetPos = Vector3.zero;
-
-        bool isFind = false;
-
-        while (!isFind)
+        while (!done)
         {
-            dir = Random.Range(1, 5);
+            int rand = Random.Range(0, spawnEnemyPoint.Count);
 
-            if (dir == 1)
+            if (!spawnEnemyPoint[rand].GetComponent<CheckVisible>().Check())
             {
-                _z = Random.Range(cameraTransform.position.z + minForward, cameraTransform.position.z + maxForward);
-                _x = Random.Range(cameraTransform.position.x - minX, cameraTransform.position.x + minX);
-            }
-
-            if (dir == 2)
-            {
-                _z = Random.Range(cameraTransform.position.z - minZ, cameraTransform.position.z - maxZ);
-                _x = Random.Range(cameraTransform.position.x + minX, cameraTransform.position.x + maxX);
-            }
-
-            if (dir == 3)
-            {
-                _z = Random.Range(cameraTransform.position.z + minForward, cameraTransform.position.z + maxForward);
-                _x = Random.Range(cameraTransform.position.x - minX, cameraTransform.position.x + minX);
-            }
-
-            if (dir == 4)
-            {
-                _z = Random.Range(cameraTransform.position.z - minForward, cameraTransform.position.z + minForward);
-                _x = Random.Range(cameraTransform.position.x - minX, cameraTransform.position.x - maxX);
-            }
-
-            targetPos = new Vector3(_x, 1, _z);
-
-            NavMesh.CalculatePath(player.transform.position, targetPos, NavMesh.AllAreas, path);
-
-            if (path.status == NavMeshPathStatus.PathComplete)
-            {
-                isFind = true;
-            }
-            else
-            {
-                isFind = false;
+                done = true;
+                position = spawnEnemyPoint[rand].transform.position;
             }
         }
 
-        return targetPos;
+        return position;
     }
 }

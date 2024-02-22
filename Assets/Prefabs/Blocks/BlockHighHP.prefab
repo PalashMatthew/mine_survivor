@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5355693730084201321}
   - component: {fileID: 6843317308651015990}
   - component: {fileID: 6959501673492153718}
+  - component: {fileID: 7425479011090207388}
   m_Layer: 8
   m_Name: BlockHighHP
   m_TagString: block
@@ -49,6 +50,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 15
   mesh: {fileID: 4779816960892104094}
+  isHP: 0
+  isResources: 0
+  expCount: 0
+  expObj: {fileID: 0}
+  hpObj: {fileID: 0}
+  resObj: {fileID: 0}
 --- !u!65 &6843317308651015990
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -91,6 +98,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7425479011090207388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7918934823854922554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183748dd497aa473a98ff0cd8cb67fc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  uniqueID: 2086719765578957734
+  updateError: 1
+  checkTime: 0.2
 --- !u!1001 &4780191396034889816
 PrefabInstance:
   m_ObjectHideFlags: 0

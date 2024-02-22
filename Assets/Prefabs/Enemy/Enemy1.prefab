@@ -60,6 +60,10 @@ MonoBehaviour:
   repulsionTime: 0.1
   repulsionSpeed: 10
   aiPatch: {fileID: 6533142358202434543}
+  isExplosion: 0
+  distanceExplosion: 0
+  explosionObj: {fileID: 0}
+  explosionPause: 0
 --- !u!114 &792905077295538290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,7 +216,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2379071754209063348}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b090bec917bbe4c3bbc612ef13f7c4a1, type: 3}
   m_Name: 
@@ -221,7 +225,7 @@ MonoBehaviour:
   useRaycasting: 1
   mask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 384
   thickRaycast: 0
   thickRaycastRadius: 0
   use2DPhysics: 0

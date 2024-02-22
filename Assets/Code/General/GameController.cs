@@ -22,7 +22,7 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        if (expCount >= expToLevel[playerLevel - 1] && playerLevel < 10)
+        if (expCount >= expToLevel[playerLevel - 1] && playerLevel < expToLevel.Count)
         {
             playerLevel++;
             GetComponent<UpgradeController>().ShowUpgrade();

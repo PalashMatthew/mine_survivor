@@ -38,11 +38,41 @@ public class UpgradeController : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
-            string s = cardName[Random.Range(0, cardName.Count)];
+            int rand = Random.Range(0, cardName.Count);
+            string s = cardName[rand];
 
             if (!upgrades.Contains(s))
             {
-                upgrades.Add(s);
+                if (rand < 10)
+                {
+                    upgrades.Add(s);
+                }
+                else if (rand >= 10 && rand <= 13)
+                {
+                    if (GameController.playerLevel >= GameObject.Find("GameController").GetComponent<GameController>().levelGun2)
+                    {
+                        upgrades.Add(s);
+                    }
+                    else
+                    {
+                        i--;
+                    }
+                }
+                else if (rand > 13)
+                {
+                    if (GameController.playerLevel >= GameObject.Find("GameController").GetComponent<GameController>().levelGun3)
+                    {
+                        upgrades.Add(s);
+                    }
+                    else
+                    {
+                        i--;
+                    }
+                }
+                else
+                {
+                    i--;
+                }
             }
             else
             {
@@ -166,6 +196,66 @@ public class UpgradeController : MonoBehaviour
         if (upgrades[num] == cardName[5])
         {
             Regen_Upg(num);
+        }
+
+        if (upgrades[num] == cardName[6])
+        {
+            Gun1_Damage_Upg(num);
+        }
+
+        if (upgrades[num] == cardName[7])
+        {
+            Gun1_Cell_Upg(num);
+        }
+
+        if (upgrades[num] == cardName[8])
+        {
+            Gun1_Speed_Upg(num);
+        }
+
+        if (upgrades[num] == cardName[9])
+        {
+            Gun1_Reload_Upg(num);
+        }
+
+        if (upgrades[num] == cardName[10])
+        {
+            Gun2_Damage_Upg(num);
+        }
+
+        if (upgrades[num] == cardName[11])
+        {
+            Gun2_Cell_Upg(num);
+        }
+
+        if (upgrades[num] == cardName[12])
+        {
+            Gun2_Speed_Upg(num);
+        }
+
+        if (upgrades[num] == cardName[13])
+        {
+            Gun2_Reload_Upg(num);
+        }
+
+        if (upgrades[num] == cardName[14])
+        {
+            Gun3_Damage_Upg(num);
+        }
+
+        if (upgrades[num] == cardName[15])
+        {
+            Gun3_Cell_Upg(num);
+        }
+
+        if (upgrades[num] == cardName[16])
+        {
+            Gun3_Speed_Upg(num);
+        }
+
+        if (upgrades[num] == cardName[17])
+        {
+            Gun3_Reload_Upg(num);
         }
     }
 
@@ -545,6 +635,738 @@ public class UpgradeController : MonoBehaviour
 
         GameObject.Find("Player").GetComponent<PlayerController>().isRegen = true;
         GameObject.Find("Player").GetComponent<PlayerController>().regenValue += GameObject.Find("Player").GetComponent<PlayerController>().regenValue / 100 * value;
+    }
+
+    void Gun1_Damage_Upg(int num)
+    {
+        float value = 0;
+
+        if (num == 0)
+        {
+            if (rarityCard1 == "common")
+            {
+                value = 5;
+            }
+
+            if (rarityCard1 == "rare")
+            {
+                value = 7;
+            }
+
+            if (rarityCard1 == "epic")
+            {
+                value = 10;
+            }
+        }
+
+        if (num == 1)
+        {
+            if (rarityCard2 == "common")
+            {
+                value = 5;
+            }
+
+            if (rarityCard2 == "rare")
+            {
+                value = 7;
+            }
+
+            if (rarityCard2 == "epic")
+            {
+                value = 10;
+            }
+        }
+
+        if (num == 2)
+        {
+            if (rarityCard3 == "common")
+            {
+                value = 5;
+            }
+
+            if (rarityCard3 == "rare")
+            {
+                value = 7;
+            }
+
+            if (rarityCard3 == "epic")
+            {
+                value = 10;
+            }
+        }
+
+        gun1.damage += gun1.damage / 100 * value;
+    }
+
+    void Gun2_Damage_Upg(int num)
+    {
+        float value = 0;
+
+        if (num == 0)
+        {
+            if (rarityCard1 == "common")
+            {
+                value = 5;
+            }
+
+            if (rarityCard1 == "rare")
+            {
+                value = 7;
+            }
+
+            if (rarityCard1 == "epic")
+            {
+                value = 10;
+            }
+        }
+
+        if (num == 1)
+        {
+            if (rarityCard2 == "common")
+            {
+                value = 5;
+            }
+
+            if (rarityCard2 == "rare")
+            {
+                value = 7;
+            }
+
+            if (rarityCard2 == "epic")
+            {
+                value = 10;
+            }
+        }
+
+        if (num == 2)
+        {
+            if (rarityCard3 == "common")
+            {
+                value = 5;
+            }
+
+            if (rarityCard3 == "rare")
+            {
+                value = 7;
+            }
+
+            if (rarityCard3 == "epic")
+            {
+                value = 10;
+            }
+        }
+
+        gun2.damage += gun2.damage / 100 * value;
+    }
+
+    void Gun3_Damage_Upg(int num)
+    {
+        float value = 0;
+
+        if (num == 0)
+        {
+            if (rarityCard1 == "common")
+            {
+                value = 5;
+            }
+
+            if (rarityCard1 == "rare")
+            {
+                value = 7;
+            }
+
+            if (rarityCard1 == "epic")
+            {
+                value = 10;
+            }
+        }
+
+        if (num == 1)
+        {
+            if (rarityCard2 == "common")
+            {
+                value = 5;
+            }
+
+            if (rarityCard2 == "rare")
+            {
+                value = 7;
+            }
+
+            if (rarityCard2 == "epic")
+            {
+                value = 10;
+            }
+        }
+
+        if (num == 2)
+        {
+            if (rarityCard3 == "common")
+            {
+                value = 5;
+            }
+
+            if (rarityCard3 == "rare")
+            {
+                value = 7;
+            }
+
+            if (rarityCard3 == "epic")
+            {
+                value = 10;
+            }
+        }
+
+        gun3.damage += gun3.damage / 100 * value;
+    }
+
+    void Gun1_Cell_Upg(int num)
+    {
+        float value = 0;
+
+        if (num == 0)
+        {
+            if (rarityCard1 == "common")
+            {
+                value = 5;
+            }
+
+            if (rarityCard1 == "rare")
+            {
+                value = 7;
+            }
+
+            if (rarityCard1 == "epic")
+            {
+                value = 10;
+            }
+        }
+
+        if (num == 1)
+        {
+            if (rarityCard2 == "common")
+            {
+                value = 5;
+            }
+
+            if (rarityCard2 == "rare")
+            {
+                value = 7;
+            }
+
+            if (rarityCard2 == "epic")
+            {
+                value = 10;
+            }
+        }
+
+        if (num == 2)
+        {
+            if (rarityCard3 == "common")
+            {
+                value = 5;
+            }
+
+            if (rarityCard3 == "rare")
+            {
+                value = 7;
+            }
+
+            if (rarityCard3 == "epic")
+            {
+                value = 10;
+            }
+        }
+
+        gun1.maxCellCount += (int)(gun1.maxCellCount / 100 * value);
+    }
+
+    void Gun2_Cell_Upg(int num)
+    {
+        float value = 0;
+
+        if (num == 0)
+        {
+            if (rarityCard1 == "common")
+            {
+                value = 5;
+            }
+
+            if (rarityCard1 == "rare")
+            {
+                value = 7;
+            }
+
+            if (rarityCard1 == "epic")
+            {
+                value = 10;
+            }
+        }
+
+        if (num == 1)
+        {
+            if (rarityCard2 == "common")
+            {
+                value = 5;
+            }
+
+            if (rarityCard2 == "rare")
+            {
+                value = 7;
+            }
+
+            if (rarityCard2 == "epic")
+            {
+                value = 10;
+            }
+        }
+
+        if (num == 2)
+        {
+            if (rarityCard3 == "common")
+            {
+                value = 5;
+            }
+
+            if (rarityCard3 == "rare")
+            {
+                value = 7;
+            }
+
+            if (rarityCard3 == "epic")
+            {
+                value = 10;
+            }
+        }
+
+        gun2.maxCellCount += (int)(gun2.maxCellCount / 100 * value);
+    }
+
+    void Gun3_Cell_Upg(int num)
+    {
+        float value = 0;
+
+        if (num == 0)
+        {
+            if (rarityCard1 == "common")
+            {
+                value = 5;
+            }
+
+            if (rarityCard1 == "rare")
+            {
+                value = 7;
+            }
+
+            if (rarityCard1 == "epic")
+            {
+                value = 10;
+            }
+        }
+
+        if (num == 1)
+        {
+            if (rarityCard2 == "common")
+            {
+                value = 5;
+            }
+
+            if (rarityCard2 == "rare")
+            {
+                value = 7;
+            }
+
+            if (rarityCard2 == "epic")
+            {
+                value = 10;
+            }
+        }
+
+        if (num == 2)
+        {
+            if (rarityCard3 == "common")
+            {
+                value = 5;
+            }
+
+            if (rarityCard3 == "rare")
+            {
+                value = 7;
+            }
+
+            if (rarityCard3 == "epic")
+            {
+                value = 10;
+            }
+        }
+
+        gun3.maxCellCount += (int)(gun3.maxCellCount / 100 * value);
+    }
+
+    void Gun1_Speed_Upg(int num)
+    {
+        float value = 0;
+
+        if (num == 0)
+        {
+            if (rarityCard1 == "common")
+            {
+                value = 5;
+            }
+
+            if (rarityCard1 == "rare")
+            {
+                value = 7;
+            }
+
+            if (rarityCard1 == "epic")
+            {
+                value = 10;
+            }
+        }
+
+        if (num == 1)
+        {
+            if (rarityCard2 == "common")
+            {
+                value = 5;
+            }
+
+            if (rarityCard2 == "rare")
+            {
+                value = 7;
+            }
+
+            if (rarityCard2 == "epic")
+            {
+                value = 10;
+            }
+        }
+
+        if (num == 2)
+        {
+            if (rarityCard3 == "common")
+            {
+                value = 5;
+            }
+
+            if (rarityCard3 == "rare")
+            {
+                value = 7;
+            }
+
+            if (rarityCard3 == "epic")
+            {
+                value = 10;
+            }
+        }
+
+        gun1.attackSpeed -= gun1.attackSpeed / 100 * value;
+    }
+
+    void Gun2_Speed_Upg(int num)
+    {
+        float value = 0;
+
+        if (num == 0)
+        {
+            if (rarityCard1 == "common")
+            {
+                value = 5;
+            }
+
+            if (rarityCard1 == "rare")
+            {
+                value = 7;
+            }
+
+            if (rarityCard1 == "epic")
+            {
+                value = 10;
+            }
+        }
+
+        if (num == 1)
+        {
+            if (rarityCard2 == "common")
+            {
+                value = 5;
+            }
+
+            if (rarityCard2 == "rare")
+            {
+                value = 7;
+            }
+
+            if (rarityCard2 == "epic")
+            {
+                value = 10;
+            }
+        }
+
+        if (num == 2)
+        {
+            if (rarityCard3 == "common")
+            {
+                value = 5;
+            }
+
+            if (rarityCard3 == "rare")
+            {
+                value = 7;
+            }
+
+            if (rarityCard3 == "epic")
+            {
+                value = 10;
+            }
+        }
+
+        gun2.attackSpeed -= gun2.attackSpeed / 100 * value;
+    }
+
+    void Gun3_Speed_Upg(int num)
+    {
+        float value = 0;
+
+        if (num == 0)
+        {
+            if (rarityCard1 == "common")
+            {
+                value = 5;
+            }
+
+            if (rarityCard1 == "rare")
+            {
+                value = 7;
+            }
+
+            if (rarityCard1 == "epic")
+            {
+                value = 10;
+            }
+        }
+
+        if (num == 1)
+        {
+            if (rarityCard2 == "common")
+            {
+                value = 5;
+            }
+
+            if (rarityCard2 == "rare")
+            {
+                value = 7;
+            }
+
+            if (rarityCard2 == "epic")
+            {
+                value = 10;
+            }
+        }
+
+        if (num == 2)
+        {
+            if (rarityCard3 == "common")
+            {
+                value = 5;
+            }
+
+            if (rarityCard3 == "rare")
+            {
+                value = 7;
+            }
+
+            if (rarityCard3 == "epic")
+            {
+                value = 10;
+            }
+        }
+
+        gun3.attackSpeed -= gun3.attackSpeed / 100 * value;
+    }
+
+    void Gun1_Reload_Upg(int num)
+    {
+        float value = 0;
+
+        if (num == 0)
+        {
+            if (rarityCard1 == "common")
+            {
+                value = 5;
+            }
+
+            if (rarityCard1 == "rare")
+            {
+                value = 7;
+            }
+
+            if (rarityCard1 == "epic")
+            {
+                value = 10;
+            }
+        }
+
+        if (num == 1)
+        {
+            if (rarityCard2 == "common")
+            {
+                value = 5;
+            }
+
+            if (rarityCard2 == "rare")
+            {
+                value = 7;
+            }
+
+            if (rarityCard2 == "epic")
+            {
+                value = 10;
+            }
+        }
+
+        if (num == 2)
+        {
+            if (rarityCard3 == "common")
+            {
+                value = 5;
+            }
+
+            if (rarityCard3 == "rare")
+            {
+                value = 7;
+            }
+
+            if (rarityCard3 == "epic")
+            {
+                value = 10;
+            }
+        }
+
+        gun1.reloadTime -= gun1.reloadTime / 100 * value;
+    }
+
+    void Gun2_Reload_Upg(int num)
+    {
+        float value = 0;
+
+        if (num == 0)
+        {
+            if (rarityCard1 == "common")
+            {
+                value = 5;
+            }
+
+            if (rarityCard1 == "rare")
+            {
+                value = 7;
+            }
+
+            if (rarityCard1 == "epic")
+            {
+                value = 10;
+            }
+        }
+
+        if (num == 1)
+        {
+            if (rarityCard2 == "common")
+            {
+                value = 5;
+            }
+
+            if (rarityCard2 == "rare")
+            {
+                value = 7;
+            }
+
+            if (rarityCard2 == "epic")
+            {
+                value = 10;
+            }
+        }
+
+        if (num == 2)
+        {
+            if (rarityCard3 == "common")
+            {
+                value = 5;
+            }
+
+            if (rarityCard3 == "rare")
+            {
+                value = 7;
+            }
+
+            if (rarityCard3 == "epic")
+            {
+                value = 10;
+            }
+        }
+
+        gun2.reloadTime -= gun2.reloadTime / 100 * value;
+    }
+
+    void Gun3_Reload_Upg(int num)
+    {
+        float value = 0;
+
+        if (num == 0)
+        {
+            if (rarityCard1 == "common")
+            {
+                value = 5;
+            }
+
+            if (rarityCard1 == "rare")
+            {
+                value = 7;
+            }
+
+            if (rarityCard1 == "epic")
+            {
+                value = 10;
+            }
+        }
+
+        if (num == 1)
+        {
+            if (rarityCard2 == "common")
+            {
+                value = 5;
+            }
+
+            if (rarityCard2 == "rare")
+            {
+                value = 7;
+            }
+
+            if (rarityCard2 == "epic")
+            {
+                value = 10;
+            }
+        }
+
+        if (num == 2)
+        {
+            if (rarityCard3 == "common")
+            {
+                value = 5;
+            }
+
+            if (rarityCard3 == "rare")
+            {
+                value = 7;
+            }
+
+            if (rarityCard3 == "epic")
+            {
+                value = 10;
+            }
+        }
+
+        gun3.reloadTime -= gun3.reloadTime / 100 * value;
     }
     #endregion
 }

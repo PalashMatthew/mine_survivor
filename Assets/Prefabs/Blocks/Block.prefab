@@ -50,6 +50,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 9
   mesh: {fileID: 6716402947300333988}
+  isHP: 0
+  isResources: 0
+  expCount: 0
+  expObj: {fileID: 0}
+  hpObj: {fileID: 0}
+  resObj: {fileID: 0}
 --- !u!65 &8802840784199134886
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -57,7 +63,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8882914138993621947}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 1f55123fc4e2ae34fbb3f6b59f86111a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -78,7 +84,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8882914138993621947}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 1f55123fc4e2ae34fbb3f6b59f86111a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

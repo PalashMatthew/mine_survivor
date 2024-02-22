@@ -8,6 +8,8 @@ public class Bullet : MonoBehaviour
     public float speed;
 
     public bool isRepulsion;
+    public bool isExplosion;
+    public GameObject grenadeExplosionObj;
 
 
     private void Start()
@@ -31,11 +33,21 @@ public class Bullet : MonoBehaviour
                 other.GetComponent<EnemyController>().Repulsion();
             }
 
+            if (isExplosion)
+            {
+                Instantiate(grenadeExplosionObj, transform.position, Quaternion.identity);
+            }
+
             Destroy(gameObject);
         }
 
         if (other.tag == "block")
         {
+            if (isExplosion)
+            {
+                Instantiate(grenadeExplosionObj, transform.position, Quaternion.identity);
+            }
+
             Destroy(gameObject);
         }
     }

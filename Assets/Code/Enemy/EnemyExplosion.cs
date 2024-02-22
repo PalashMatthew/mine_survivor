@@ -7,6 +7,8 @@ public class EnemyExplosion : MonoBehaviour
     public float damage;
     SphereCollider col;
 
+    public bool isDamagePlayer;
+
     private void Start()
     {
         col = GetComponent<SphereCollider>();
@@ -25,7 +27,7 @@ public class EnemyExplosion : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "player")
+        if (other.tag == "player" && isDamagePlayer)
         {
             other.GetComponent<PlayerController>().Hit(damage);
         }

@@ -458,37 +458,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5792085098093893027, guid: eca242eb43b778747b0a706f3ed9337e, type: 3}
   m_PrefabInstance: {fileID: 24663121}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &26502001
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 26502002}
-  m_Layer: 9
-  m_Name: spawnPos
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &26502002
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 26502001}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.562, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 477252454}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &27996926
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3251,8 +3220,8 @@ MonoBehaviour:
   - {fileID: 1768912992}
   bossObj: {fileID: 6854687952167112022, guid: e071bcf6b6f74dc4ebe6d6b34998c30a, type: 3}
   timeBossSpawn: 180
-  timeToAddEnemy: 15
-  royTime: 5
+  timeToAddEnemy: 50
+  royTime: 50
   royCount: 1
   enemyCountInRoy: 100
 --- !u!4 &226904950
@@ -7110,28 +7079,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3055082062b40e428812d703409a9cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &477252452
+--- !u!1 &477252452 stripped
 GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 905591722500786265, guid: 4b0164d5153297b46af5dfecb0e1260d, type: 3}
+  m_PrefabInstance: {fileID: 943379032}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 477252454}
-  - component: {fileID: 477252453}
-  m_Layer: 9
-  m_Name: Grenade
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &477252453
+--- !u!114 &477252453 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 8370460929337717825, guid: 4b0164d5153297b46af5dfecb0e1260d, type: 3}
+  m_PrefabInstance: {fileID: 943379032}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 477252452}
   m_Enabled: 1
@@ -7139,33 +7095,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d1e46bf5fece074c809b4dda1f1647d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackSpeed: 1
-  damage: 5
-  layer:
-    serializedVersion: 2
-    m_Bits: 384
-  bulletObj: {fileID: 6997410181731726215, guid: 9f95a244a21f7b6429e78f537b259736, type: 3}
-  spawnPos: {fileID: 26502002}
-  maxCellCount: 1
-  currCellCount: 1
-  reloadTime: 3
-  distanceShot: 15
---- !u!4 &477252454
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 477252452}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 26502002}
-  m_Father: {fileID: 943379033}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &488363236
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13349,48 +13278,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 1715058213358041201, guid: 4b0164d5153297b46af5dfecb0e1260d, type: 3}
-      propertyPath: m_TagString
-      value: player
-      objectReference: {fileID: 0}
     - target: {fileID: 2439219729044554684, guid: 4b0164d5153297b46af5dfecb0e1260d, type: 3}
       propertyPath: joy
       value: 
       objectReference: {fileID: 1621793877}
-    - target: {fileID: 2439219729044554684, guid: 4b0164d5153297b46af5dfecb0e1260d, type: 3}
-      propertyPath: speed
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: 2767028463339747465, guid: 4b0164d5153297b46af5dfecb0e1260d, type: 3}
-      propertyPath: damage
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2767028463339747465, guid: 4b0164d5153297b46af5dfecb0e1260d, type: 3}
-      propertyPath: attackSpeed
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5089955427808529963, guid: 4b0164d5153297b46af5dfecb0e1260d, type: 3}
-      propertyPath: miningSpeed
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5286885778836321784, guid: 4b0164d5153297b46af5dfecb0e1260d, type: 3}
-      propertyPath: regenValue
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6898664990819876125, guid: 4b0164d5153297b46af5dfecb0e1260d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8187713704796539796, guid: 4b0164d5153297b46af5dfecb0e1260d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 1259810481228729311, guid: 4b0164d5153297b46af5dfecb0e1260d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 477252454}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b0164d5153297b46af5dfecb0e1260d, type: 3}
 --- !u!4 &943379033 stripped

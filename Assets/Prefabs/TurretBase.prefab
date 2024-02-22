@@ -220,6 +220,7 @@ MonoBehaviour:
   blockInZone: []
   isZoneClear: 0
   Turret: {fileID: 6637431932636282366, guid: a0a0a0630ee74fa45a75e5d76dfa42cf, type: 3}
+  maxScale: 15.67
 --- !u!135 &25440854580583611
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -16,7 +16,9 @@ public class TurretBase : MonoBehaviour
 
     public bool isZoneClear;
 
-    public GameObject Turret; 
+    public GameObject Turret;
+
+    public float maxScale;
 
 
     private void Start()
@@ -34,7 +36,7 @@ public class TurretBase : MonoBehaviour
                                                     mesh.transform.localScale.y,
                                                     mesh.transform.localScale.z + (Time.deltaTime * fillingSpeed));
 
-            if (mesh.transform.localScale.x > 15.67f)
+            if (mesh.transform.localScale.x > maxScale)
             {
                 Instantiate(Turret, transform.position, transform.rotation);
                 Destroy(gameObject);

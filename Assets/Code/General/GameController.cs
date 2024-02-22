@@ -13,6 +13,9 @@ public class GameController : MonoBehaviour
 
     public float expPickUpDistance;
 
+    public GameObject gun2, gun3;
+    public int levelGun2, levelGun3;
+
     private void Start()
     {
         Application.targetFrameRate = 60;
@@ -26,6 +29,12 @@ public class GameController : MonoBehaviour
         {
             playerLevel++;
             GetComponent<UpgradeController>().ShowUpgrade();
+
+            if (playerLevel == levelGun2)
+                gun2.SetActive(true);
+
+            if (playerLevel == levelGun3)
+                gun3.SetActive(true);
         }
     }
 }

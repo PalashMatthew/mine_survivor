@@ -3284,6 +3284,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   expToLevel: 0a000000140000001e00000028000000320000003c00000046000000500000005a00000064000000
   expPickUpDistance: 3
+  gun2: {fileID: 1417274190}
+  gun3: {fileID: 477252452}
+  levelGun2: 5
+  levelGun3: 10
 --- !u!114 &226904952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19018,12 +19022,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3055082062b40e428812d703409a9cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1417274190 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6898664990819876125, guid: 4b0164d5153297b46af5dfecb0e1260d, type: 3}
+  m_PrefabInstance: {fileID: 943379032}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1417274192 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1496662702344758364, guid: 4b0164d5153297b46af5dfecb0e1260d, type: 3}
   m_PrefabInstance: {fileID: 943379032}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1417274190}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1131f4d6df9b224faecc562460aaeac, type: 3}

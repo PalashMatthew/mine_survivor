@@ -68,6 +68,10 @@ public class EnemyController : MonoBehaviour
 
         GameObject.Find("GameController").GetComponent<EnemySpawn>().enemyInst.Remove(gameObject);
 
+        Vector3 pos = new Vector3(Random.Range(transform.position.x - 0.5f, transform.position.x + 0.5f), 1, Random.Range(transform.position.z - 0.5f, transform.position.z + 0.5f));
+
+        Instantiate(expObj, pos, transform.rotation);
+
         Destroy(gameObject);
     }
 

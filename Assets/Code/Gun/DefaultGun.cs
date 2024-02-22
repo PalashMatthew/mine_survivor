@@ -35,36 +35,34 @@ public class DefaultGun : MonoBehaviour
     {
         yield return new WaitForSeconds(attackSpeed);
 
+        float dist = 99999;
+        GameObject enemyObj = null;
+
+        foreach (GameObject gm in enemySpawn.enemyInst)
+        {
+            if (Vector3.Distance(transform.position, gm.transform.position) < dist && CheckRay(gm))
+            {
+                enemyObj = gm;
+                dist = Vector3.Distance(transform.position, gm.transform.position);
+            }
+        }
+
+        if (enemyObj != null)
+        {
+            GameObject _bullet = Instantiate(bulletObj, spawnPos.position, transform.rotation);
+            _bullet.transform.forward = enemyObj.transform.position - transform.position;
+            //_bullet.transform.position = new Vector3(_bullet.transform.position.x, 1.5f, _bullet.transform.position.z);
+
+            _bullet.GetComponent<Bullet>().damage = damage;
+
+            currCellCount--;
+        }
+        
         if (currCellCount > 0)
         {
-            float dist = 99999;
-            GameObject enemyObj = null;
-
-            foreach (GameObject gm in enemySpawn.enemyInst)
-            {
-                if (Vector3.Distance(transform.position, gm.transform.position) < dist && CheckRay(gm))
-                {
-                    enemyObj = gm;
-                    dist = Vector3.Distance(transform.position, gm.transform.position);
-                }
-            }
-
-            if (enemyObj != null)
-            {
-                GameObject _bullet = Instantiate(bulletObj, spawnPos.position, transform.rotation);
-                _bullet.transform.forward = enemyObj.transform.position - transform.position;
-                //_bullet.transform.position = new Vector3(_bullet.transform.position.x, 1.5f, _bullet.transform.position.z);
-
-                _bullet.GetComponent<Bullet>().damage = damage;
-
-                currCellCount--;
-            }
-
-            
             StartCoroutine(Attack());
         }        
-
-        if (currCellCount <= 0)
+        else
         {
             StartCoroutine(Reload());
         }

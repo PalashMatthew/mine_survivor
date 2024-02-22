@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ExpController : MonoBehaviour
 {
-    public float pickUpDistance;
+    private float pickUpDistance;
     Transform player;
 
     bool isPickUp = false;
@@ -13,6 +13,8 @@ public class ExpController : MonoBehaviour
     private void Start()
     {
         player = GameObject.Find("Player").transform;
+
+        pickUpDistance = GameObject.Find("GameController").GetComponent<GameController>().expPickUpDistance;
     }
 
     private void Update()

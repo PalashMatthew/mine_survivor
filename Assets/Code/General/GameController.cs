@@ -11,8 +11,12 @@ public class GameController : MonoBehaviour
 
     public static int playerLevel;
 
+    public float expPickUpDistance;
+
     private void Start()
     {
+        Application.targetFrameRate = 60;
+
         playerLevel = 1;
     }
 
@@ -21,6 +25,7 @@ public class GameController : MonoBehaviour
         if (expCount >= expToLevel[playerLevel - 1] && playerLevel < 10)
         {
             playerLevel++;
+            GetComponent<UpgradeController>().ShowUpgrade();
         }
     }
 }

@@ -9,6 +9,14 @@ public class PlayerController : MonoBehaviour
 
     public GameObject turret;
 
+    public bool isRegen;
+    public float regenValue;
+
+    private void Start()
+    {
+        StartCoroutine(Regen());
+    }
+
     public void Hit(float _damage)
     {
         hp -= _damage;
@@ -25,5 +33,17 @@ public class PlayerController : MonoBehaviour
         {
             Instantiate(turret, new Vector3(transform.position.x, 1f, transform.position.z), transform.rotation);
         }
+    }
+
+    IEnumerator Regen()
+    {
+        yield return new WaitForSeconds(1);
+
+        if (isRegen)
+        {
+            hp += hp / 100 * regenValue;
+        }
+
+        StartCoroutine(Regen());
     }
 }

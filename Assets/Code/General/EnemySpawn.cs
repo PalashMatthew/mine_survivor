@@ -34,6 +34,11 @@ public class EnemySpawn : MonoBehaviour
 
     public float timeToAddEnemy;
 
+    [Header("Roy")]
+    public float royTime;
+    public int royCount;
+    public int enemyCountInRoy;
+
 
     private void Start()
     {
@@ -46,6 +51,8 @@ public class EnemySpawn : MonoBehaviour
         StartCoroutine(SpawnBoss());
 
         StartCoroutine(AddEnemyType());
+
+        StartCoroutine(SpawnRoy());
     }
 
     IEnumerator AddEnemyType()
@@ -124,6 +131,45 @@ public class EnemySpawn : MonoBehaviour
         }        
 
         StartCoroutine(SpawnEnemy());
+    }
+
+    IEnumerator SpawnRoy()
+    {
+        yield return new WaitForSeconds(royTime);
+
+        royCount--;
+
+        for (int i = 0; i < enemyCountInRoy; i++)
+        {
+            if (enemyInst.Count < maxEnemyInLevel)
+            {
+                GameObject _enemy;
+
+                int rand = Random.Range(1, 101);
+
+                if (rand <= enemy2Chance)
+                {
+                    _enemy = enemy2;
+                }
+                else if (rand > enemy2Chance && rand < enemy3Chance)
+                {
+                    _enemy = enemy3;
+                }
+                else
+                {
+                    _enemy = enemy;
+                }
+
+                GameObject gm = Instantiate(_enemy, SpawnPosition(), transform.rotation);
+                enemyInst.Add(gm);
+            }
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        if (royCount > 0)
+        {
+            StartCoroutine(SpawnRoy());
+        }
     }
 
     Vector3 SpawnPosition()
